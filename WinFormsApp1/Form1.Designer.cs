@@ -38,7 +38,7 @@
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 0;
-            button1.Text = "blue";
+            button1.Text = "rectangle";
             button1.TextImageRelation = TextImageRelation.TextAboveImage;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -49,7 +49,7 @@
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 1;
-            button2.Text = "red";
+            button2.Text = "triangle";
             button2.TextImageRelation = TextImageRelation.TextAboveImage;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;

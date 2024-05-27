@@ -24,17 +24,11 @@
             {
 
                 Graphics g = this.CreateGraphics();
-
-                // Draw Rectangle
-                g.DrawRectangle(bluePen, new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
-
-                // Draw Triangle
-                Point point1 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point point2 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point point3 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point[] trianglePoints = { point1, point2, point3 };
-
-                g.DrawPolygon(bluePen, trianglePoints);
+                int rectWidth = rnd.Next(10, 250);
+                int rectHeight = rnd.Next(10, 250);
+                Color rectColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)); 
+                Pen rectPen = new Pen(rectColor, 4);
+                g.DrawRectangle(rectPen, new Rectangle(rnd.Next(0, this.Width - rectWidth), rnd.Next(0, this.Height - rectHeight), rectWidth, rectHeight));
                 Thread.Sleep(5);
             }
             MessageBox.Show("completed blue");
@@ -46,7 +40,6 @@
             {
 
                 Graphics g = this.CreateGraphics();
-                g.DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(new Random().Next(0, this.Width), new Random().Next(0, this.Height), 20, 20));
                 Point point1 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
                 Point point2 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
                 Point point3 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));

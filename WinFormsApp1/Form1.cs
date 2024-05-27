@@ -118,5 +118,14 @@ namespace WinFormsApp1
                 Thread.Sleep(4000); // wait for 4 seconds
             }
         }
+
+        // stop all
+
+        private void button7_Click(object sender, EventArgs e) // button that stops all
+        {
+            drawingRectangle = false; // changing the value
+            drawingTriangle = false; // changing the value
+            drawingCircle = false; // changing the value
+        }
     }
 }

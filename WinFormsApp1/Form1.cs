@@ -19,6 +19,7 @@
         {
             for (int i = 0; i < 10; i++)
             {
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Blue, 4), new Rectangle(new Random().Next(0, this.Width), new Random().Next(0, this.Height), 20, 20));
                 Thread.Sleep(50);
             }
             MessageBox.Show("completed blue");
@@ -28,6 +29,8 @@
         {
             for (int i = 0; i < 10; i++)
             {
+                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(new Random().Next(0, this.Width), new Random().Next(0, this.Height), 20, 20));
+
                 Thread.Sleep(50);
             }
             MessageBox.Show("completed red");

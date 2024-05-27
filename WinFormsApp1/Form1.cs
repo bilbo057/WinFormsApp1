@@ -9,16 +9,15 @@
 
         Thread th;
         Thread th1;
+        Thread th2;
         Random rnd = new Random();
-        Pen bluePen = new Pen(Brushes.Blue, 4);
-        Pen redPen = new Pen(Brushes.Red, 4);
 
         private void button1_Click(object sender, EventArgs e)
         {
             th = new Thread(thread);
             th.Start();
         }
-        public void thread() 
+        public void thread()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -26,12 +25,11 @@
                 Graphics g = this.CreateGraphics();
                 int rectWidth = rnd.Next(10, 250);
                 int rectHeight = rnd.Next(10, 250);
-                Color rectColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)); 
+                Color rectColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
                 Pen rectPen = new Pen(rectColor, 4);
                 g.DrawRectangle(rectPen, new Rectangle(rnd.Next(0, this.Width - rectWidth), rnd.Next(0, this.Height - rectHeight), rectWidth, rectHeight));
                 Thread.Sleep(5);
             }
-            MessageBox.Show("completed blue");
         }
 
         public void threadb()
@@ -46,8 +44,20 @@
 
                 Thread.Sleep(5);
             }
-            MessageBox.Show("completed red");
         }
+        public void threadc()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Graphics g = this.CreateGraphics();
+                int circleDiameter = rnd.Next(10, 250);
+                Color circleColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                Pen circlePen = new Pen(circleColor, 4);
+                g.DrawEllipse(circlePen, new Rectangle(rnd.Next(0, this.Width - circleDiameter), rnd.Next(0, this.Height - circleDiameter), circleDiameter, circleDiameter));
+                Thread.Sleep(5);
+            }
+        }
+
         private void DrawEquilateralTriangle(Graphics g, Pen pen)
         {
             int sideLength = rnd.Next(10, 50); // Random length of each side of the equilateral triangle
@@ -82,6 +92,16 @@
         {
             th1 = new Thread(threadb);
             th1.Start();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (th2 != null && th2.IsAlive)
+            {
+                th2.Abort();
+            }
+            th2 = new Thread(threadc);
+            th2.Start();
         }
     }
 }

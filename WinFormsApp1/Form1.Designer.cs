@@ -31,6 +31,9 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -66,11 +69,47 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // button4
+            // 
+            button4.Location = new Point(136, 130);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 52);
+            button4.TabIndex = 3;
+            button4.Text = "rectangle stop";
+            button4.TextImageRelation = TextImageRelation.TextAboveImage;
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(300, 130);
+            button5.Name = "button5";
+            button5.Size = new Size(94, 52);
+            button5.TabIndex = 4;
+            button5.Text = "triangle stop";
+            button5.TextImageRelation = TextImageRelation.TextAboveImage;
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(473, 130);
+            button6.Name = "button6";
+            button6.Size = new Size(94, 52);
+            button6.TabIndex = 5;
+            button6.Text = "circle stop";
+            button6.TextImageRelation = TextImageRelation.TextAboveImage;
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -84,5 +123,8 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
     }
 }

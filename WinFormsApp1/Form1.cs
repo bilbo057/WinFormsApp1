@@ -40,15 +40,42 @@
             {
 
                 Graphics g = this.CreateGraphics();
-                Point point1 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point point2 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point point3 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
-                Point[] trianglePoints = { point1, point2, point3 };
+                Color triColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                Pen triPen = new Pen(triColor, 4);
+                DrawEquilateralTriangle(g, triPen);
 
-                g.DrawPolygon(redPen, trianglePoints);
                 Thread.Sleep(5);
             }
             MessageBox.Show("completed red");
+        }
+        private void DrawEquilateralTriangle(Graphics g, Pen pen)
+        {
+            int sideLength = rnd.Next(10, 50); // Random length of each side of the equilateral triangle
+            Point startPoint = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+
+            // Calculate the three vertices of the equilateral triangle
+            Point point1 = startPoint;
+            Point point2 = new Point(startPoint.X + sideLength, startPoint.Y);
+            Point point3 = new Point(startPoint.X + (int)(sideLength / 2.0), startPoint.Y + (int)(sideLength * Math.Sqrt(3) / 2.0));
+
+            Point[] trianglePoints = { point1, point2, point3 };
+
+            // Ensure the triangle is within the drawing area
+            if (IsWithinBounds(trianglePoints))
+            {
+                g.DrawPolygon(pen, trianglePoints);
+            }
+        }
+        private bool IsWithinBounds(Point[] points)
+        {
+            foreach (Point point in points)
+            {
+                if (point.X < 0 || point.X > this.Width || point.Y < 0 || point.Y > this.Height)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void button2_Click(object sender, EventArgs e)

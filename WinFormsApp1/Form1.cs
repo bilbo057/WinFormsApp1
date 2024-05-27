@@ -105,29 +105,26 @@ namespace WinFormsApp1
 
         private void button3_Click(object sender, EventArgs e) // starts the circle
         {
-            if (th2 != null && th2.IsAlive)
-            {
-                th2.Abort();
-            }
-            th2 = new Thread(threadc);
+            drawingCircle = true;
+            th2 = new Thread(ThreadCircle);
             th2.Start();
         }
 
         private void button6_Click(object sender, EventArgs e) // stops the circle
         {
-
+            drawingCircle = false;
         }
 
-        public void threadc()
+        public void ThreadCircle()
         {
-            for (int i = 0; i < 1; i++)
+            while (drawingCircle)
             {
                 Graphics g = this.CreateGraphics();
                 int circleDiameter = rnd.Next(10, 250);
                 Color circleColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
                 Pen circlePen = new Pen(circleColor, 4);
                 g.DrawEllipse(circlePen, new Rectangle(rnd.Next(0, this.Width - circleDiameter), rnd.Next(0, this.Height - circleDiameter), circleDiameter, circleDiameter));
-                Thread.Sleep(5);
+                Thread.Sleep(300); // wait for 3 seconds
             }
         }
     }

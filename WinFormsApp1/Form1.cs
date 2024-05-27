@@ -42,7 +42,7 @@ namespace WinFormsApp1
                 Color rectColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));  // setting the color of the rectangle
                 Pen rectPen = new Pen(rectColor, 4);  // setting the witdh and the color of pen that draws the rectangle the rectangle
                 g.DrawRectangle(rectPen, new Rectangle(rnd.Next(0, this.Width - rectWidth), rnd.Next(0, this.Height - rectHeight), rectWidth, rectHeight)); // acctually drawing the rectangle
-                Thread.Sleep(3000); // wait for 3 seconds
+                Thread.Sleep(300); // wait for 3 seconds
             }
         }
 
@@ -50,19 +50,21 @@ namespace WinFormsApp1
         // triangle part
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // starts the triangle
         {
-            th1 = new Thread(threadb);
-            th1.Start();
+            drawingTriangle = true; // changing the value
+            th1 = new Thread(DrawTriangles); // giving it value
+            th1.Start(); // starting the thread
         }
+
         private void button5_Click(object sender, EventArgs e) // stops the triangle
         {
-
+            drawingTriangle = false; // changing the value
         }
 
-        public void threadb()
+        public void DrawTriangles() // thread that draws the triangles
         {
-            for (int i = 0; i < 1; i++)
+            while (drawingTriangle) // loop that draws triangles until the boolean is true
             {
                 Graphics g = this.CreateGraphics();
                 Color triColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
@@ -81,7 +83,7 @@ namespace WinFormsApp1
                     g.DrawPolygon(triPen, trianglePoints);
                 }
 
-                Thread.Sleep(5);
+                Thread.Sleep(200); // wait for 2 seconds
             }
         }
 

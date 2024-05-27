@@ -10,6 +10,8 @@
         Thread th;
         Thread th1;
         Random rnd = new Random();
+        Pen bluePen = new Pen(Brushes.Blue, 4);
+        Pen redPen = new Pen(Brushes.Red, 4);
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -20,8 +22,8 @@
         {
             for (int i = 0; i < 10; i++)
             {
+
                 Graphics g = this.CreateGraphics();
-                Pen bluePen = new Pen(Brushes.Blue, 4);
 
                 // Draw Rectangle
                 g.DrawRectangle(bluePen, new Rectangle(rnd.Next(0, this.Width), rnd.Next(0, this.Height), 20, 20));
@@ -40,9 +42,17 @@
 
         public void threadb()
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
-                this.CreateGraphics().DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(new Random().Next(0, this.Width), new Random().Next(0, this.Height), 20, 20));
+
+                Graphics g = this.CreateGraphics();
+                g.DrawRectangle(new Pen(Brushes.Red, 4), new Rectangle(new Random().Next(0, this.Width), new Random().Next(0, this.Height), 20, 20));
+                Point point1 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+                Point point2 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+                Point point3 = new Point(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+                Point[] trianglePoints = { point1, point2, point3 };
+
+                g.DrawPolygon(redPen, trianglePoints);
                 Thread.Sleep(5);
             }
             MessageBox.Show("completed red");
